@@ -1,5 +1,9 @@
 import { Router } from "express";
 import type { Request, Response } from "express";
+import {
+	getAllProducts,
+	getProductInfo,
+} from "../controller/productController";
 
 const router = Router();
 
@@ -8,5 +12,6 @@ router.get("/hlw", (req: Request, res: Response) => {
 		message: "Hello from the route!",
 	});
 });
-
+router.get("/products", getAllProducts);
+router.get("/products/options", getProductInfo);
 export const allRoutes = router;

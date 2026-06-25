@@ -30,7 +30,7 @@ app.use(
 // routes
 app.use("/api/auth", authroute);
 app.use(verifyToken); // Apply token verification to all routes below
-app.use(allRoutes);
+app.use("/api/", allRoutes);
 
 // test route
 app.get("/", (req: Request, res: Response) => {
