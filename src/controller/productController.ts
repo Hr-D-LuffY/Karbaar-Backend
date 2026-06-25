@@ -1,6 +1,25 @@
 import { type Request, type Response } from "express";
 import { pool } from "../db";
 
+export const getAllCategories = async (
+	req: Request,
+	res: Response,
+): Promise<void> => {
+	try {
+		const result = await pool.query(
+			`
+            SELECT DISTINCT   c.id,c.name
+			FROM categories c 
+			ORDER BY c.id ASC
+            `,
+		);
+		res.status(200).json(result.rows);
+	} catch (error) {
+		console.error("Error fetching categories:", error);
+		res.status(500).json({ error: "Internal server error" });
+	}
+};
+
 export const getAllProducts = async (
 	req: Request,
 	res: Response,
