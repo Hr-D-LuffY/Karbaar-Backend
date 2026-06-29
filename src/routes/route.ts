@@ -4,8 +4,8 @@ import {
 	getAllCategories,
 	getAllProducts,
 	getProductInfo,
-
 } from "../controller/productController";
+import { restockProducts } from "../controller/restockController";
 
 const router = Router();
 
@@ -17,4 +17,6 @@ router.get("/hlw", (req: Request, res: Response) => {
 router.get("/categories", getAllCategories);
 router.get("/products", getAllProducts);
 router.get("/products/options", getProductInfo);
+router.post("/restock", restockProducts);
+
 export const allRoutes = router;
